@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.js"></script>
+    <script src="/dist/augurio-taiwan.min.css"></script>
+    <script src="index.js" defer></script>
+
+
+    <title>台灣</title>
+</head>
+<style>
+    .row {
+        background-color: rgb(0, 167, 173);
+    }
+
+    .header-stamp {
+        /* margin-left: 10px; */
+        width: 200px;
+        height: 50px;
+        border-radius: 20px;
+        margin-top: 5px;
+        margin-left: 20px;
+        border: 2px solid red;
+        align-items: center;
+        justify-content: center;
+        /* 水平居中 */
+        align-items: center;
+        /* 垂直居中 */
+        display: flex;
+    }
+
+    #header-txt {
+        display: flex;
+        align-items: center;
+    }
+
+
+
+    .search-container {
+        position: relative;
+        /* 确保父元素是相对定位的 */
+    }
+
+    #search-input {
+        position: absolute;
+        right: 90px;
+        /* 距离右边 20px */
+        top: -10px;
+        /* 距离顶部 10px */
+        border-radius: 10px;
+    }
+
+    .header-tag {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: center;
+        /* 水平居中 */
+        align-items: center;
+        /* 垂直居中 */
+    }
+
+
+    #travelinfo {
+        border-radius: 5px;
+        flex: 2;
+        /* 让输入框填充剩余的空间 */
+        margin-right: 10px;
+        /* 右边距 */
+        white-space: nowrap;
+        display: inline-block;
+    }
+
+    #language-select {
+        border-radius: 5px;
+        height: 30px;
+        margin-right: 10px;
+        width: 120px;
+        /* 为下拉菜单设置固定宽度 */
+    }
+
+    /* 当屏幕宽度小于等于768px时 */
+    @media screen and (max-width: 768px) {
+        #travelinfo {
+            width: auto;
+            /* 将宽度设置为自适应 */
+            margin-right: 0;
+            /* 取消右边距 */
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        #language-select {
+            width: auto;
+            /* 将宽度设置为自适应 */
+        }
+    }
+
+    #Taiwan {
+        height: 500px;
+        border: 2px solid red;
+    }
+
+
+
+    .bgi {
+        /* position: fixed; */
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        /* z-index: -999; */
+    }
+
+    .bgi img {
+        min-height: 100%;
+        width: 100%;
+
+    }
+
+    img {
+        margin: 0;
+    }
+
+    .county {
+        fill: #ebf0e4;
+        stroke: blue;
+        stroke-width: 0.4px;
+    }
+
+    .county:hover {
+        fill: lightgray;
+    }
+
+    .pageHeader {
+        background: rgb(0, 167, 173);
+        border: red 2px solid;
+        height: 100px;
+    }
+
+    footer {
+        height: 500px;
+        border: 2px solid black;
+    }
+</style>
+
+<body>
+    <div class="row">
+        <div class="col-sm-3 col-md-6 col-lg-4" id="header-container">
+            <div class="header-stamp">LOGO</div>
+        </div>
+        <div class="col-sm-3 col-md-6 col-lg-4" id="header-txt">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="搜索想去的景點       🔍">
+                <span id="search-icon" onclick="searchClicked()"></span>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-6 col-lg-4" id="header-txt">
+            <div class="header-tag">
+                <input type="button" id="travelinfo" value="旅遊資訊" onclick="infoClicked()">
+                <input type="button" id="travelinfo" value="成為導遊" onclick="infoClicked()">
+                <select id="language-select">
+                    <option value="繁體中文">繁體中文</option>
+                    <option value="英文">英文</option>
+                    <!-- 添加其他语言选项 -->
+                </select>
+                <input type="button" id="travelinfo" value="註冊會員" onclick="registerClicked()">
+                <input type="button" id="travelinfo" value="會員登入" onclick="loginClicked()">
+            </div>
+        </div>
+    </div>
+    <div class="container-fuuid">
+        <div class="row">
+            <div class="col" style="background-color: lightblue;" id="Taiwan">
+                <div class="bgi">
+                    <img src="/img/taipei101.jpeg" alt="">
+                </div>
+            </div>
+            <svg width="450" height="600" style="position: absolute; left: -167px; top: 57px; z-index: 2;">
+            </svg>
+
+
+                <!-- <footer>
+                <h6>聯絡資訊</h6>
+                <div class="col-sm-9 col-md-6 col-lg-8" style="background-color:lightcoral;"></div>
+            </footer> -->
+                <script>
+                    function searchClicked() {
+                        // 处理点击放大镜图标的事件
+                        // 这里可以添加搜索逻辑
+                        alert("搜索功能尚未实现！");
+                    }
+                    function infoCliced() {
+                        // 处理点击放大镜图标的事件
+                        // 这里可以添加搜索逻辑
+                        alert("搜索功能尚未实现！");
+
+                    } function registerClicked() {
+                        // 处理点击放大镜图标的事件
+                        // 这里可以添加搜索逻辑
+                        alert("搜索功能尚未实现！");
+
+                    } function loginClicked() {
+                        // 处理点击放大镜图标的事件
+                        // 这里可以添加搜索逻辑
+                        alert("搜索功能尚未实现！");
+
+                    }
+                </script>
+        </div>
+    </div>
+
+</body>
+
+</html>
